@@ -6,7 +6,7 @@
 import { WebSocketServer, WebSocket } from 'ws';
 
 // Port d'escolta del servidor
-const PORT = 8180;
+const PORT = process.env.PORT || 8180; // port per railway
 
 // Historial de traços en memòria (es perd en reiniciar el servidor)
 const history = [];
