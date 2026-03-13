@@ -4,8 +4,7 @@
 let domini = window.location.protocol == "file:" ? "localhost" : window.location.hostname;
 
 // Protocol: ws:// per defecte. Canvia a wss:// per connexions segures.
-const WS_URL = `ws://${domini}:8180`;
-// const WS_URL = `wss://${domini}:8180`; // ← descomenta per HTTPS
+const WS_URL = `wss://tu-app.railway.app`; // url
 
 //  Colors disponibles 
 const COLORS = [
