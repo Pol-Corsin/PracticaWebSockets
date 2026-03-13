@@ -1,0 +1,13 @@
+{
+  "name": "shared-canvas",
+  "version": "1.0.0",
+  "description": "Pissarra col·laborativa multiusuari amb WebSocket i JavaScript",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.17.0"
+  }
+}
