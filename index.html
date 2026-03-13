@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pissarra Col·laborativa</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f1a;
+      --surface: #1a1a2e;
+      --accent: #e94560;
+      --text: #eaeaea;
+      --border: #2a2a4a;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    header {
+      height: 64px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 20px;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .spacer { flex: 1; }
+
+    /* Paleta de colors */
+    #palette { display: flex; gap: 6px; align-items: center; }
+
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+    }
+    .swatch:hover { transform: scale(1.15); }
+    .swatch.active { border-color: var(--text); transform: scale(1.2); }
+
+    /* Controls */
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+    }
+    label { opacity: 0.7; }
+    input[type="range"] { width: 80px; accent-color: var(--accent); }
+
+    #clearBtn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: opacity 0.15s;
+    }
+    #clearBtn:hover { opacity: 0.85; }
+
+    #status {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #333;
+      white-space: nowrap;
+    }
+    #status.connected    { background: #1a4a2e; color: #4caf50; }
+    #status.disconnected { background: #4a1a1a; color: #f44336; }
+    #status.error        { background: #4a2a1a; color: #ff9800; }
+
+    #canvas-container {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+    }
+
+    #canvas {
+      display: block;
+      background: #ffffff;
+      cursor: crosshair;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎨 Pissarra Col·laborativa</h1>
+    <div id="palette"></div>
+    <div class="control-group">
+      <label for="lineWidth">Gruix:</label>
+      <input type="range" id="lineWidth" min="1" max="30" value="4" />
+    </div>
+    <div class="spacer"></div>
+    <button id="clearBtn">Netejar</button>
+    <span id="status">Connectant…</span>
+  </header>
+
+  <div id="canvas-container">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
